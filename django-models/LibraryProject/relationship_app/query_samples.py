@@ -1,4 +1,4 @@
-from relationship_app.models import Author, Book, Library
+from relationship_app.models import Author, Book, Library, Librarian
 
 def books_by_author(author_name: str):
     try:
@@ -35,10 +35,11 @@ def librarian_for_library(library_name: str):
         print(f"No library named '{library_name}' found.")
         return
 
-    librarian = getattr(library, "librarian", None)
-    if librarian:
+    try:
+        # 👇 explicit get() with filter condition
+        librarian = Librarian.objects.get(library=library)
         print(f"\nLibrarian for '{library_name}': {librarian.name}")
-    else:
+    except Librarian.DoesNotExist:
         print(f"\nNo librarian assigned to '{library_name}'.")
 
 
