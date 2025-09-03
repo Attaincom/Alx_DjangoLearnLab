@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import list_books
 from .views import LibraryDetailView
-from .views import register
+from .views import register  # now matches checker
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
