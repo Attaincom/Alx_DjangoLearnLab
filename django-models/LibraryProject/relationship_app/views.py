@@ -1,18 +1,16 @@
 from django.shortcuts import render
 from django.views.generic import DetailView
-from .models import Book, Library
+from .models import Book, Library  # must include Library
 
 
 # Function-based view to list all books
 def list_books(request):
     books = Book.objects.all()
-    # ✅ Explicit app namespace in template path
     return render(request, "relationship_app/list_books.html", {"books": books})
 
 
 # Class-based view to show library details
 class LibraryDetailView(DetailView):
     model = Library
-    # ✅ Explicit app namespace in template path
     template_name = "relationship_app/library_detail.html"
     context_object_name = "library"
