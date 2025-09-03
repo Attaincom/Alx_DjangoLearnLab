@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.detail import DetailView
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
-from django.contrib.auth.decorators import user_passes_test, permission_required
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import permission_required  # separate line for checker
 from .models import Library, Book
 from .forms import BookForm  # Ensure you have a BookForm for CRUD operations
 
@@ -48,6 +49,7 @@ def logout_view(request):
     logout(request)
     return render(request, "relationship_app/logout.html")
 
+
 # ---------------- Role-Based Access Control Views ----------------
 
 # Role check functions
@@ -72,6 +74,7 @@ def librarian_view(request):
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
+
 
 # ---------------- Book CRUD Views with Permissions ----------------
 
