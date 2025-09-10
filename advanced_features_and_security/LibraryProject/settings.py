@@ -73,9 +73,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# ✅ Custom User Model for lab checker (points to dummy in bookshelf)
-AUTH_USER_MODEL = 'bookshelf.CustomUser'
+AUTH_USER_MODEL = "bookshelf.CustomUser"
 
-# ✅ Media settings for profile photos
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
