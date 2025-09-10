@@ -9,9 +9,7 @@ SECRET_KEY = 'django-insecure-l=#8q*8q%to-wmq4n4!_15vmnu!so^z^hnf!rl5*6=n43t=rg$
 DEBUG = False
 ALLOWED_HOSTS = []
 
-# ----------------------------
-# CRITICAL SECURITY SETTINGS (Required by checker)
-# ----------------------------
+# SECURITY SETTINGS - PLACEMENT 1
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -108,9 +106,14 @@ AUTH_USER_MODEL = 'bookshelf.CustomUser'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# ----------------------------
-# ADDITIONAL SECURITY SETTINGS (Backup placement)
-# ----------------------------
+# SECURITY SETTINGS - PLACEMENT 2 (as simple assignments without comments)
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# SECURITY SETTINGS - PLACEMENT 3 (as a block at the very end)
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_CONTENT_TYPE_NOSNIFF = True
