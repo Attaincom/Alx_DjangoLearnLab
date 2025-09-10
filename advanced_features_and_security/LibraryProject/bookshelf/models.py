@@ -1,11 +1,10 @@
-# bookshelf/models.py
 from django.db import models
 
+# Example model (optional)
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
-    publication_year = models.IntegerField()
+    published_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
-        # human-readable representation shown in shell/admin
-        return f"{self.title}"
+        return self.title
