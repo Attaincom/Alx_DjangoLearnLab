@@ -10,6 +10,15 @@ DEBUG = False
 ALLOWED_HOSTS = []
 
 # ----------------------------
+# SECURITY SETTINGS (Moved up)
+# ----------------------------
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# ----------------------------
 # INSTALLED APPS
 # ----------------------------
 INSTALLED_APPS = [
@@ -98,12 +107,3 @@ AUTH_USER_MODEL = 'bookshelf.CustomUser'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-# ----------------------------
-# REQUIRED SECURITY SETTINGS (Lab Checker)
-# ----------------------------
-SECURE_BROWSER_XSS_FILTER = True
-X_FRAME_OPTIONS = 'DENY'
-SECURE_CONTENT_TYPE_NOSNIFF = True
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
