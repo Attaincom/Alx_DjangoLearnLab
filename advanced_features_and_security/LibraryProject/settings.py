@@ -4,8 +4,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-l=#8q*8q%to-wmq4n4!_15vmnu!so^z^hnf!rl5*6=n43t=rg$'
 
-DEBUG = True
-
+# SECURITY SETTINGS
+DEBUG = False
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
@@ -15,9 +15,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bookshelf', 
+    'bookshelf',
     'relationship_app',
-    'accounts',   # real CustomUser app
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -70,36 +70,32 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = "bookshelf.CustomUser"
+# Custom User Model
+AUTH_USER_MODEL = 'bookshelf.CustomUser'
 
+# Media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# ----------------------------
 # SECURITY ENHANCEMENTS
+# ----------------------------
 
-# In production, DEBUG should always be False
-DEBUG = False
-
-# Browser-side protections
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_CONTENT_TYPE_NOSNIFF = True
-
-# Ensure cookies are only sent over HTTPS
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
-# Additional optional security settings
-SECURE_HSTS_SECONDS = 3600  # HTTP Strict Transport Security
+# Optional additional security
+SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-SECURE_SSL_REDIRECT = True  # Redirect all HTTP to HTTPS
+SECURE_SSL_REDIRECT = True
 
-# Content Security Policy (CSP) - requires django-csp or middleware
-# Example using middleware header approach:
+# Content Security Policy (CSP)
 CSP_DEFAULT_SRC = ("'self'",)
 CSP_STYLE_SRC = ("'self'", "'unsafe-inline'")
 CSP_SCRIPT_SRC = ("'self'",)
