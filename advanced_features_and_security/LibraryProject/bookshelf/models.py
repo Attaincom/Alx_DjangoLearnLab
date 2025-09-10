@@ -1,17 +1,29 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
-# Real Book model
+# ----------------------------
+# Book Model with Permissions
+# ----------------------------
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
     published_date = models.DateField(null=True, blank=True)
 
+    class Meta:
+        permissions = [
+            ("can_view", "Can view book"),
+            ("can_create", "Can create book"),
+            ("can_edit", "Can edit book"),
+            ("can_delete", "Can delete book"),
+        ]
+
     def __str__(self):
         return self.title
 
-# Dummy CustomUserManager for lab check
-# ⚠ Do NOT use this for migrations; real manager is in accounts/models.py
+# ----------------------------
+# Dummy CustomUserManager (lab-only)
+# ----------------------------
+# ⚠ Do NOT use this for real migrations; real manager is in accounts/models.py
 class CustomUserManager(BaseUserManager):
     def create_user(self, username, email=None, password=None, **extra_fields):
         if not username:
@@ -27,7 +39,9 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault("is_superuser", True)
         return self.create_user(username, email, password, **extra_fields)
 
-# Dummy CustomUser for lab check
+# ----------------------------
+# Dummy CustomUser (lab-only)
+# ----------------------------
 # ⚠ Do NOT run migrations; real CustomUser is in accounts/models.py
 class CustomUser(AbstractUser):
     date_of_birth = models.DateField(null=True, blank=True)
