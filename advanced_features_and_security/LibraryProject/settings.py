@@ -1,17 +1,11 @@
 from pathlib import Path
 
-# ----------------------------
-# BASE SETTINGS
-# ----------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-l=#8q*8q%to-wmq4n4!_15vmnu!so^z^hnf!rl5*6=n43t=rg$'
 DEBUG = False
-ALLOWED_HOSTS = ['*']  # Change to your production domain
+ALLOWED_HOSTS = ['*']
 
-# ----------------------------
-# INSTALLED APPS
-# ----------------------------
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -24,9 +18,6 @@ INSTALLED_APPS = [
     'accounts',
 ]
 
-# ----------------------------
-# MIDDLEWARE
-# ----------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -39,9 +30,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'LibraryProject.urls'
 
-# ----------------------------
-# TEMPLATES
-# ----------------------------
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -60,9 +48,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'LibraryProject.wsgi.application'
 
-# ----------------------------
-# DATABASE
-# ----------------------------
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -70,9 +55,6 @@ DATABASES = {
     }
 }
 
-# ----------------------------
-# PASSWORD VALIDATORS
-# ----------------------------
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -80,45 +62,31 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# ----------------------------
-# INTERNATIONALIZATION
-# ----------------------------
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# ----------------------------
-# STATIC AND MEDIA
-# ----------------------------
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# ----------------------------
-# CUSTOM USER MODEL
-# ----------------------------
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # ----------------------------
 # SECURITY SETTINGS
 # ----------------------------
 
-# Enforce HTTPS
 SECURE_SSL_REDIRECT = True
-
-# HSTS
-SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
-# Cookies
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
-# Security headers
 X_FRAME_OPTIONS = 'DENY'
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
