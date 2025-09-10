@@ -1,25 +1,22 @@
 from pathlib import Path
 
 # ----------------------------
-# BASE DIRECTORY
+# BASE SETTINGS
 # ----------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = 'django-insecure-l=#8q*8q%to-wmq4n4!_15vmnu!so^z^hnf!rl5*6=n43t=rg$'
+DEBUG = False
+ALLOWED_HOSTS = []
+
 # ----------------------------
-# REQUIRED SECURITY SETTINGS (Lab Checker)
+# CRITICAL SECURITY SETTINGS (Required by checker)
 # ----------------------------
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_CONTENT_TYPE_NOSNIFF = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
-
-# ----------------------------
-# SECRET & DEBUG
-# ----------------------------
-SECRET_KEY = 'django-insecure-l=#8q*8q%to-wmq4n4!_15vmnu!so^z^hnf!rl5*6=n43t=rg$'
-DEBUG = False
-ALLOWED_HOSTS = []
 
 # ----------------------------
 # INSTALLED APPS
@@ -31,9 +28,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bookshelf',          # Custom User app
+    'bookshelf',
     'relationship_app',
-    'accounts',           # Your real accounts app (if used)
+    'accounts',
 ]
 
 # ----------------------------
@@ -49,9 +46,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# ----------------------------
-# URL Configuration
-# ----------------------------
 ROOT_URLCONF = 'LibraryProject.urls'
 
 # ----------------------------
@@ -73,9 +67,6 @@ TEMPLATES = [
     },
 ]
 
-# ----------------------------
-# WSGI
-# ----------------------------
 WSGI_APPLICATION = 'LibraryProject.wsgi.application'
 
 # ----------------------------
@@ -89,7 +80,7 @@ DATABASES = {
 }
 
 # ----------------------------
-# PASSWORD VALIDATION
+# PASSWORD VALIDATORS
 # ----------------------------
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
@@ -110,11 +101,9 @@ USE_TZ = True
 # STATIC AND MEDIA
 # ----------------------------
 STATIC_URL = 'static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# ----------------------------
-# CUSTOM USER MODEL
-# ----------------------------
 AUTH_USER_MODEL = 'bookshelf.CustomUser'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
