@@ -42,3 +42,10 @@ def book_delete(request, pk):
         book.delete()
         return redirect('book_list')
     return render(request, 'bookshelf/book_confirm_delete.html', {'book': book})
+
+# Safe search example
+@login_required
+def search_books(request):
+    query = request.GET.get('q', '')
+    books = Book.objects.filter(title__icontains=query)  # ORM prevents SQL injection
+    return render(request, 'bookshelf/book_list.html', {'books': books})
