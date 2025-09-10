@@ -1,12 +1,11 @@
 from pathlib import Path
 
 # ----------------------------
-# BASE CONFIG
+# BASE SETTINGS
 # ----------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-l=#8q*8q%to-wmq4n4!_15vmnu!so^z^hnf!rl5*6=n43t=rg$'
-
 DEBUG = False
 ALLOWED_HOSTS = []
 
@@ -72,7 +71,7 @@ DATABASES = {
 }
 
 # ----------------------------
-# PASSWORD VALIDATION
+# PASSWORD VALIDATORS
 # ----------------------------
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
@@ -101,25 +100,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # ----------------------------
-# SECURITY SETTINGS (Lab Required)
-# ----------------------------
-# ----------------------------
-# REQUIRED SECURITY SETTINGS FOR LAB CHECKER
+# REQUIRED SECURITY SETTINGS (Lab Checker)
 # ----------------------------
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_CONTENT_TYPE_NOSNIFF = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
-
-
-# Optional additional security (not required by lab)
-SECURE_HSTS_SECONDS = 3600
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_SSL_REDIRECT = True
-
-# Content Security Policy (CSP) example
-CSP_DEFAULT_SRC = ("'self'",)
-CSP_STYLE_SRC = ("'self'", "'unsafe-inline'")
-CSP_SCRIPT_SRC = ("'self'",)
