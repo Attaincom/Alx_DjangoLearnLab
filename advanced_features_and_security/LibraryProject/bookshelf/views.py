@@ -49,3 +49,6 @@ def search_books(request):
     query = request.GET.get('q', '')
     books = Book.objects.filter(title__icontains=query)  # ORM prevents SQL injection
     return render(request, 'bookshelf/book_list.html', {'books': books})
+def form_example_view(request):
+    form = ExampleForm()
+    return render(request, 'bookshelf/form_example.html', {'form': form})
