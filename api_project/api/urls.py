@@ -1,7 +1,11 @@
-from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import BookViewSet
+
+# Create a router and register our viewset with it
+router = DefaultRouter()
+router.register(r'books', BookViewSet, basename='book')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),   # ✅ include API app routes
+    path('', include(router.urls)),
 ]
