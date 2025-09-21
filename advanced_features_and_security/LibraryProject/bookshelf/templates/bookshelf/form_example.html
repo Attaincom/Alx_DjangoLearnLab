@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Form</title>
+    <!-- Content Security Policy Example -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Add / Edit Book</h1>
+
+    <!--
+        Security Notes:
+        1. CSRF token included to prevent Cross-Site Request Forgery attacks.
+        2. All form inputs will be handled safely in the view using Django forms.
+        3. Content Security Policy meta tag reduces XSS risks.
+    -->
+
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Book</button>
+    </form>
+
+    <p>
+        <a href="{% url 'book_list' %}">Back to Book List</a>
+    </p>
+</body>
+</html>
